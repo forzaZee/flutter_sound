@@ -77,15 +77,17 @@ public class FlutterSoundManager
 
 	public void resetPlugin( final MethodCall call, final Result result )
 	{
-		for (int i = 0; i < slots.size () ; ++i)
-		{
-			if (slots.get ( i ) != null)
-			{
-				slots.get ( i ).reset(call, result);
-			}
-			slots   = new ArrayList<FlutterSoundSession>();
-		}
-		result.success(0);
+        try {
+            for (int i = 0; i < slots.size(); ++i) {
+                if (slots.get(i) != null) {
+                    slots.get(i).reset(call, result);
+                }
+                slots = new ArrayList<FlutterSoundSession>();
+            }
+            result.success(0);
+        } catch (Exception e) {
+
+        }
 	}
 
 }
